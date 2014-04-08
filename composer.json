@@ -1,7 +1,9 @@
 {
     "require": {
         "silex/silex": "~1.1",
-        "behat/behat": "2.4.*@stable"
+        "behat/behat": "2.4.*@stable",
+        "twig/twig": "v1.15.1",
+        "symfony/twig-bridge": "~2.3"
     }, 
     "config": {
         "bin-dir": "bin/"
