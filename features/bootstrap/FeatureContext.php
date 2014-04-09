@@ -24,7 +24,7 @@ class FeatureContext extends BehatContext
      */
     public function iAmOnTheDashboard()
     {
-        $this->session->visit('http://localhost:9080');
+        $this->session->visit('http://localhost:9080/dashboard');
     }
 
     /**
@@ -32,9 +32,11 @@ class FeatureContext extends BehatContext
      */
     public function iShouldGet($string)
     {
-        $dashboard = $this->session->getPage();
+        $dashboard  = $this->session->getPage();
+        $html       = $dashboard->getHtml();
+        $contains   = strpos($html, $string->getRaw());
 
-        assertTrue($dashboard->hasContent($string));
+        assertTrue($contains !== false, 'Failed to find: '.$string);
     }
     
     /** @AfterScenario */

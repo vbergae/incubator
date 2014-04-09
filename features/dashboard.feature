@@ -9,14 +9,5 @@ Scenario: List 10 starred projects
   Then I should get:
     """
     My Starred Project 1
-    My Starred Project 2
-    My Starred Project 3
-    My Starred Project 4
-    My Starred Project 5
-    My Starred Project 6
-    My Starred Project 7
-    My Starred Project 8    
-    My Starred Project 9
-    My Starred Project 10
     """
 

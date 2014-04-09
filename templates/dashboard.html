@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>Starred Projects</h2>
+    <ul id="starred_projects">
+        {% for project in starred_projects %}
+            <li>{{ project }}</li>
+        {% endfor %}
+    </ul>    
+{% endblock %}

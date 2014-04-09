@@ -12,6 +12,17 @@ $app->get('/', function() use ($app) {
    return $app['twig']->render('index.html'); 
 });
 
+$app->get('/dashboard', function() use ($app) {
+    $starred = array();
+    for ($i = 0; $i < 10; ++$i) {
+        $starred[] = 'My Starred Project '.($i + 1);
+    }
+    
+    return $app['twig']->render('dashboard.html', array (
+       'starred_projects' => $starred 
+    ));
+});
+
 $app->get('/hello/{name}', function ($name) use ($app) {
     return $app['twig']->render('hello.html', array(
         'name' => $app->escape($name))
