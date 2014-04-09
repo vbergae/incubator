@@ -29,12 +29,6 @@ $app->get('/dashboard', function() use ($app) {
     ));
 });
 
-$app->get('/hello/{name}', function ($name) use ($app) {
-    return $app['twig']->render('hello.html', array(
-        'name' => $app->escape($name))
-    );
-});
-
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
         return;
