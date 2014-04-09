@@ -1,10 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h2>Starred Projects</h2>
+    <h2>Projects</h2>
+    <ul id="user_projects">
+        {% for project in user_projects %}
+            <li>{{ project }}</li>
+        {% endfor %}
+    </ul>        
+
+    <h2>Starred</h2>
     <ul id="starred_projects">
         {% for project in starred_projects %}
             <li>{{ project }}</li>
         {% endfor %}
     </ul>    
+
 {% endblock %}

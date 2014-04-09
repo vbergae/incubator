@@ -17,9 +17,15 @@ $app->get('/dashboard', function() use ($app) {
     for ($i = 0; $i < 10; ++$i) {
         $starred[] = 'My Starred Project '.($i + 1);
     }
+
+    $user = array();
+    for ($i = 0; $i < 10; ++$i) {
+        $user[] = 'My Project '.($i + 1);
+    }    
     
     return $app['twig']->render('dashboard.html', array (
-       'starred_projects' => $starred 
+       'starred_projects'   => $starred,
+        'user_projects'     => $user
     ));
 });
 
