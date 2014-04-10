@@ -9,6 +9,15 @@ Scenario: Access dashboard as Anonynous user
     When I am on the dashboard
     Then I should get redirected to "/login"
 
+Scenario: List last activity
+    Given the homepage
+    Given I am "test@users.com" user
+    When I am on the dashboard
+    Then I should get:
+        """
+        Some generated activity 1
+        """
+
 Scenario: List Starred projects
     Given the homepage
     Given I am "test@users.com" user

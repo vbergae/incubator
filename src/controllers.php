@@ -27,6 +27,11 @@ $app->get('/dashboard', function() use ($app, $auth) {
     if (!$auth->isLogged())
         return $app->redirect('login');
     
+    $feed = array();
+    for ($i = 0; $i < 10; ++$i) {
+        $feed[] = 'Some generated activity '.($i + 1);
+    }
+    
     $starred = array();
     for ($i = 0; $i < 10; ++$i) {
         $starred[] = 'My Starred Project '.($i + 1);
@@ -39,7 +44,7 @@ $app->get('/dashboard', function() use ($app, $auth) {
     
     return $app['twig']->render('dashboard.html.twig', array (
         'user'              => $auth->getUser(),
-        'logout_url'        => $auth->getLogoutUrl(),
+        'last_activity'     => $feed,
         'starred_projects'  => $starred,
         'user_projects'     => $user
     ));
