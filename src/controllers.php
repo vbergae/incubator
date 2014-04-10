@@ -15,8 +15,12 @@ $app->get('/', function () use ($app, $auth) {
         $app->redirect("/login"); 
 });
 
-$app->get('/login', function() use ($app, $auth) {
+$app->get('/login', function() use ($auth) {
     return $auth->getRedirectToLogin();
+});
+
+$app->get('/logout', function() use ($app, $auth) {
+    return $app->redirect($auth->getLogoutUrl());
 });
 
 $app->get('/dashboard', function() use ($app, $auth) {
