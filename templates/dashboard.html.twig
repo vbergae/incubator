@@ -1,7 +1,84 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <h1>Welcome {{ user.nickname }}</h1>
+    <h1>Dashboard</h1>    
+    
+    <div class="row col-md-12 col-md-offset1">
+        <!--Body content-->   
+        <div class="col-md-10">
+            <table class="table table-hover col-md-6">
+                <thead>
+                    <tr>
+                        <td><h3>Activity</h3></td>
+                    </tr>
+                </thead>
+    {#          
+            {% for item in feed %}#}            
+                <tr>
+                    <td>
+                          <div class="media">
+                          <a class="pull-left" href="#">
+                            <img class="media-object" src="http://lorempixel.com/48/48/people/" alt="Avatar">
+                          </a>
+                          <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>
+                            <p>Some description</p>    
+                            <ul class="list-inline">
+                                <li><a href="#">Up</a></li>
+                                <li><a href="#">Down</a></li>
+                                <li><a href="#">X comments</a></li>
+                            </ul>    
+                          </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                          <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://lorempixel.com/48/48/people/" alt="Avatar">
+                            </a>
+                          <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>
+                            <p>Some description</p>    
+                            <ul class="list-inline">
+                                <li><a href="#">Up</a></li>
+                                <li><a href="#">Down</a></li>
+                                <li><a href="#">X comments</a></li>
+                            </ul>    
+                          </div>
+                        </div>
+                    </td>
+                </tr>            
+          {#  {% endfor %}
+    #}
+            </table>     
+        </div>
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            <h2>Incubating</h2>
+            
+            <ul class="list-unstyled">
+                {% for project in user_projects %}
+                    <li><p><a href="#">{{ project}}</a></p></li>
+                {% endfor %}
+            </ul>
+
+            <h2>Starred</h2>
+            
+            <ul class="list-unstyled">
+                {% for project in starred_projects %}
+                    <li><p><a href="#">{{ project}}</a></p></li>
+                {% endfor %}
+            </ul>            
+        </div>
+    </div>
+
+{% endblock %}
+
+{#
+{% block content %}
+    <h1>Dashboard</h1>
     <p><a href="{{ logout_url }}">Logout</a></p>
     
     <h2>Projects</h2>
@@ -19,3 +96,4 @@
     </ul>    
 
 {% endblock %}
+#}

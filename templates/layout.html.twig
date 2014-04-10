@@ -40,10 +40,10 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.nickname }} <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="#">View Profile</a></li>
-                    <li><a href="#">Inbox (x)</a></li>
+                    <li><a href="#">Inbox <span class="badge">XX</span></a></li>
                     <li class="divider"></li>
                     <li><a href="logout">Logout</a></li>
                   </ul>
@@ -53,8 +53,6 @@
           </div><!-- /.container-fluid -->
         </nav>        
         
-  
-
         <div class="block">
             <div class="container-fluid">
                 {% block content %}{% endblock %}
@@ -67,4 +65,22 @@
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>    
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>    
+    <script>
+        window.onload = function() {
+            $('#add_button').click(function() {
+                var path = '/';
+                $.ajax({
+                    type: 'GET',
+                    url: path,
+                    success: function(data) {
+                        $(data).appendTo('#modal');
+                        $('#modal').on('hidden', function() {
+                            $('#modal').empty();
+                        });
+                        $('#modal').modal('show');
+                    }        
+                });       
+            });
+        };
+    </script>    
 </html>
