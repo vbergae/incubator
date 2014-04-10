@@ -1,8 +1,6 @@
 <?php
 namespace Gae;
 
-require_once 'google/appengine/api/users/UserService.php';
-
 use google\appengine\api\users\UserService;
 use Gae\Auth;
 use Silex\Application;
