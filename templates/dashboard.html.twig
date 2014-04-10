@@ -37,7 +37,6 @@
         <div class="col-md-2">
             <!--Sidebar content-->
             <h2>Incubating</h2>
-            
             <ul class="list-unstyled">
                 {% for project in user_projects %}
                     <li><p><a href="#">{{ project}}</a></p></li>
@@ -45,7 +44,6 @@
             </ul>
 
             <h2>Starred</h2>
-            
             <ul class="list-unstyled">
                 {% for project in starred_projects %}
                     <li><p><a href="#">{{ project}}</a></p></li>
@@ -55,25 +53,3 @@
     </div>
 
 {% endblock %}
-
-{#
-{% block content %}
-    <h1>Dashboard</h1>
-    <p><a href="{{ logout_url }}">Logout</a></p>
-    
-    <h2>Projects</h2>
-    <ul id="user_projects">
-        {% for project in user_projects %}
-            <li>{{ project }}</li>
-        {% endfor %}
-    </ul>        
-
-    <h2>Starred</h2>
-    <ul id="starred_projects">
-        {% for project in starred_projects %}
-            <li>{{ project }}</li>
-        {% endfor %}
-    </ul>    
-
-{% endblock %}
-#}
