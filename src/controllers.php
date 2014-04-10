@@ -6,13 +6,23 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-//Request::setTrustedProxies(array('127.0.0.1'));
-
-$app->get('/', function() use ($app) {
-   return $app['twig']->render('index.html.twig'); 
+/** @var Auth $auth */
+$auth = $app['gae.auth']();
+ 
+$app->get('/', function () use ($app, $auth) {
+    return $auth->isLogged() ?
+        $app->redirect("/dashboard") :
+        $app->redirect("/login"); 
 });
 
-$app->get('/dashboard', function() use ($app) {
+$app->get('/login', function() use ($app, $auth) {
+    return $auth->getRedirectToLogin();
+});
+
+$app->get('/dashboard', function() use ($app, $auth) {
+    if (!$auth->isLogged())
+        return $app->redirect('login');
+    
     $starred = array();
     for ($i = 0; $i < 10; ++$i) {
         $starred[] = 'My Starred Project '.($i + 1);
@@ -24,7 +34,9 @@ $app->get('/dashboard', function() use ($app) {
     }    
     
     return $app['twig']->render('dashboard.html.twig', array (
-       'starred_projects'   => $starred,
+        'user'              => $auth->getUser(),
+        'logout_url'        => $auth->getLogoutUrl(),
+        'starred_projects'  => $starred,
         'user_projects'     => $user
     ));
 });

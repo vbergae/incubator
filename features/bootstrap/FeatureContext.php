@@ -20,6 +20,34 @@ class FeatureContext extends BehatContext
     }
 
     /**
+     * @Given /^I am "([^"]*)" user$/
+     */
+    public function iAmUser($arg1)
+    {
+        if ((string)$arg1 == 'Anonymous')
+            return;
+        
+        $login = $this->session->getPage();
+        assertTrue($login->hasField('email'));
+       
+        $field = $login->findField('email');
+        assertNotNull($field);
+        
+        $field->setValue($arg1, 'field "name" not found');
+        
+        $button = $login->findById('submit-login');
+        $button->click();
+    }    
+    
+    /**
+     * @Given /^the homepage$/
+     */
+    public function theHomepage()
+    {
+        $this->session->visit('http://localhost:9080/dashboard');
+    }    
+    
+    /**
      * @When /^I am on the dashboard$/
      */
     public function iAmOnTheDashboard()
@@ -27,6 +55,15 @@ class FeatureContext extends BehatContext
         $this->session->visit('http://localhost:9080/dashboard');
     }
 
+    /**
+     * @Then /^I should get redirected to "([^"]*)"$/
+     */
+    public function iShouldGetRedirectedTo($arg1)
+    {
+        $contains = strpos($this->session->getCurrentUrl(), $arg1);
+        assertTrue($contains !== false, 'Failed to find: '.$arg1);        
+    }    
+    
     /**
      * @Then /^I should get:$/
      */

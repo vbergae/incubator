@@ -1,6 +1,9 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
+    <h1>Welcome {{ user.nickname }}</h1>
+    <p><a href="{{ logout_url }}">Logout</a></p>
+    
     <h2>Projects</h2>
     <ul id="user_projects">
         {% for project in user_projects %}
