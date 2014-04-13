@@ -7,7 +7,7 @@ before_script:
   - wget https://commondatastorage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.2.zip
   - unzip google_appengine_1.9.2.zip > /dev/null
   - ls -l
-  - cd google_appengine_1.9.2
+  - cd google_appengine
   - python dev_appserver.py --help
   - python dev_appserver.py --port=9080 ../
   - cd ..
