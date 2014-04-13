@@ -5,14 +5,13 @@ php:
 
 before_script:
   - /home/travis/.phpenv/versions/5.4.25/bin/php --version
-#  - wget https://commondatastorage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.2.zip
-#  - unzip google_appengine_1.9.2.zip > /dev/null
-#  - ls -l
-#  - cd google_appengine
-#  - python dev_appserver.py --help
-#  - python dev_appserver.py --port=9080 --php_executable_path== --skip_sdk_update_check=True ../ &
-#  - cd ..
-#  - composer install
+  - wget https://commondatastorage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.2.zip
+  - unzip google_appengine_1.9.2.zip > /dev/null
+  - cd google_appengine
+  - python dev_appserver.py --help
+  - python dev_appserver.py --port=9080 --php_executable_path=/home/travis/.phpenv/versions/5.4.25/bin/php --skip_sdk_update_check=True ../ &
+  - cd ..
+  - composer install
 
 script: bin/behat
 
