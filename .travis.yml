@@ -6,7 +6,10 @@ php:
 before_script:
   - wget https://commondatastorage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.2.zip
   - unzip google_appengine_1.9.2.zip > /dev/null
-  - ./google_appengine_1.9.2/dev_appserver.py --port=9080 ./ 
+  - cd google_appengine_1.9.2
+  - ./dev_appserver.py --help
+  - ./dev_appserver.py --port=9080 ../
+  - cd ..
   - composer install
 
 script: bin/behat
