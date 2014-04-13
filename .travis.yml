@@ -7,6 +7,6 @@ before_script:
   - wget https://commondatastorage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.2.zip
   - unzip google_appengine_1.9.2.zip 
   - composer install
-
+  - ls -l
 script: bin/behat
 
