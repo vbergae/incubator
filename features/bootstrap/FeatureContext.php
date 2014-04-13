@@ -91,6 +91,63 @@ class FeatureContext extends BehatContext
         assertTrue($contains !== false, 'Failed to find: '.$string);
     }
     
+
+    /**
+     * @Given /^I am on the dasboard$/
+     */
+    public function iAmOnTheDasboard()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I click "([^"]*)" button$/
+     */
+    public function iClickButton($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I visit "([^"]*)"$/
+     */
+    public function iVisit($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should see "([^"]*)" element$/
+     */
+    public function iShouldSeeElement($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^The element "([^"]*)" should contain more than "([^"]*)" element$/
+     */
+    public function theElementShouldContainMoreThanElement($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I set the field "([^"]*)" with the value "([^"]*)"$/
+     */
+    public function iSetTheFieldWithTheValue($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I click the element "([^"]*)"$/
+     */
+    public function iClickTheElement($arg1)
+    {
+        throw new PendingException();
+    }    
+    
     /** @AfterScenario */
     public function after(){
         $this->session->reset();
