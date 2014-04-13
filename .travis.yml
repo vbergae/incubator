@@ -9,7 +9,7 @@ before_script:
   - ls -l
   - cd google_appengine
   - python dev_appserver.py --help
-  - python dev_appserver.py --port=9080 ../
+  - python dev_appserver.py --port=9080 --skip_sdk_update_check=True ../
   - cd ..
   - composer install
 
