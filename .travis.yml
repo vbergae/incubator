@@ -11,5 +11,5 @@ before_script:
   - python google_appengine/dev_appserver.py --skip_sdk_update_check=yes --port=9080 --admin_port=8001 --php_executable_path=/home/travis/.phpenv/versions/5.4.25/bin/php ./ &
   - sleep 30s
 
-script: bin/behat
+script: bin/behat -strict
 
