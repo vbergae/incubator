@@ -24,6 +24,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
 
 class FeatureContext extends BehatContext
 {
+    const TESTHOST = 'http://localhost:9080';
     private $session;
     
     /** @BeforeScenario */
@@ -54,21 +55,13 @@ class FeatureContext extends BehatContext
         $button->click();
     }    
     
-    /**
-     * @Given /^the homepage$/
+  /**
+     * @When /^I am on the "([^"]*)"$/
      */
-    public function theHomepage()
+    public function iAmOnThe($arg1)
     {
-        $this->session->visit('http://localhost:9080/dashboard');
+        $this->session->visit(self::TESTHOST.$arg1);
     }    
-    
-    /**
-     * @When /^I am on the dashboard$/
-     */
-    public function iAmOnTheDashboard()
-    {
-        $this->session->visit('http://localhost:9080/dashboard');
-    }
 
     /**
      * @Then /^I should get redirected to "([^"]*)"$/
@@ -91,37 +84,23 @@ class FeatureContext extends BehatContext
         assertTrue($contains !== false, 'Failed to find: '.$string);
     }
     
-
-    /**
-     * @Given /^I am on the dasboard$/
-     */
-    public function iAmOnTheDasboard()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When /^I click "([^"]*)" button$/
-     */
-    public function iClickButton($arg1)
-    {
-        throw new PendingException();
-    }
-
     /**
      * @When /^I visit "([^"]*)"$/
      */
     public function iVisit($arg1)
     {
-        throw new PendingException();
+        $this->session->visit($arg1);
     }
-
+    
     /**
-     * @Then /^I should see "([^"]*)" element$/
+     * @When /^I click the element "([^"]*)"$/
      */
-    public function iShouldSeeElement($arg1)
+    public function iClickTheElement($arg1)
     {
-        throw new PendingException();
+        $login      = $this->session->getPage();
+        $element    = $login->findById($arg1);
+        assertTrue($element !== NULL, 'Element with id "'.$arg1.'" not found');
+        $element->click();        
     }
 
     /**
@@ -136,14 +115,6 @@ class FeatureContext extends BehatContext
      * @When /^I set the field "([^"]*)" with the value "([^"]*)"$/
      */
     public function iSetTheFieldWithTheValue($arg1, $arg2)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Given /^I click the element "([^"]*)"$/
-     */
-    public function iClickTheElement($arg1)
     {
         throw new PendingException();
     }    
