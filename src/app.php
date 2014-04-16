@@ -19,6 +19,8 @@ use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
+use Silex\Provider\FormServiceProvider;
+use Silex\Provider\TranslationServiceProvider;
 use Gae\LoginProvider;
 use Gae\Auth;
 
@@ -31,11 +33,14 @@ $app->register(new LoginProvider(), array(
     'auth.onlogin.callback.url' => '/dashboard',
     'auth.onlogout.callback.url' => '/',
 ));
-
-$app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
-    // add custom globals, filters, tags, ...
-
-    return $twig;
-}));
+$app->register(new FormServiceProvider());
+$app->register(new TranslationServiceProvider(), array(
+    'locale_fallbacks' => array('en'),
+));
+//$app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
+//    // add custom globals, filters, tags, ...
+//
+//    return $twig;
+//}));
 
 return $app;
