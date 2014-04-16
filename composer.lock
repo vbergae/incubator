@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b4ecaccd7f4041e1bca38a265bc282f8",
+    "hash": "9dc4392b041a32833bb7888b0480efd4",
     "packages": [
         {
             "name": "dflydev/doctrine-orm-service-provider",
@@ -1823,6 +1823,56 @@
                 "localization"
             ],
             "time": "2014-02-11 13:52:09"
+        },
+        {
+            "name": "symfony/locale",
+            "version": "v2.4.3",
+            "target-dir": "Symfony/Component/Locale",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Locale.git",
+                "reference": "7f38bea9f5afb24d720931dd4469fbc798bcce63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Locale/zipball/7f38bea9f5afb24d720931dd4469fbc798bcce63",
+                "reference": "7f38bea9f5afb24d720931dd4469fbc798bcce63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/intl": ">=2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Locale\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Locale Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-01-07 13:28:54"
         },
         {
             "name": "symfony/monolog-bridge",
