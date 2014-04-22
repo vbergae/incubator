@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 5.4
+
+before_script:
+  - composer self-update
+  - composer install
+  - wget https://commondatastorage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.2.zip
+  - unzip google_appengine_1.9.2.zip > /dev/null
+  - python google_appengine/dev_appserver.py --skip_sdk_update_check=yes --port=9080 --admin_port=8001 --php_executable_path=/home/travis/.phpenv/versions/5.4.25/bin/php ./ &
+  - sleep 30s
+
+script: bin/behat -strict
+

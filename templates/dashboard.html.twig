@@ -1,0 +1,71 @@
+{#
+   Copyright 2014 Víctor Berga <vbergae@gmail.com>
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+#}
+
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <h1>Dashboard</h1>    
+    
+    <div class="row col-md-12 col-md-offset1">
+        <!--Body content-->   
+        <div class="col-md-10">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td><h3>Activity</h3></td>
+                    </tr>
+                </thead>    
+                {% for item in last_activity %}
+                <tr>
+                    <td>
+                          <div class="media">
+                          <a class="pull-left" href="#">
+                            <img class="media-object" src="http://lorempixel.com/48/48/people/" alt="Avatar">
+                          </a>
+                          <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>
+                            <p>{{ item }}</p>    
+                            <ul class="list-inline">
+                                <li><a href="#">Up</a></li>
+                                <li><a href="#">Down</a></li>
+                                <li><a href="#">X comments</a></li>
+                            </ul>    
+                          </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>     
+        </div>
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            <h2>Incubating</h2>
+            <ul class="list-unstyled">
+                {% for project in user_projects %}
+                    <li><p><a href="#">{{ project}}</a></p></li>
+                {% endfor %}
+            </ul>
+
+            <h2>Starred</h2>
+            <ul class="list-unstyled">
+                {% for project in starred_projects %}
+                    <li><p><a href="#">{{ project}}</a></p></li>
+                {% endfor %}
+            </ul>            
+        </div>
+    </div>
+
+{% endblock %}
